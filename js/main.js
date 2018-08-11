@@ -122,7 +122,7 @@ new Vue({
         narationjp: 'この小型なプロジェクトは２０１８年のKayac面談のためにやりました。自分でKayacのメインサイトを作成しました。Vueのポートフォリオを現在持っていないため私のスキルを発揮するためにこのプロジェクトをやりました！BootstrapとVue.jsとjQueryで作りました。このページはできる限り効率に作成しました。スマホ画面対応も可能です！',
         background: 'kayac-popup.jpg',
         backgroundsp: 'kayac-sp.jpg',
-        link: '#',
+        link: 'https://junioangga.github.io/kayac/',
         display: 'kayacdisplay'
       },
       {
@@ -172,7 +172,7 @@ new Vue({
         narationjp: '自分が作りましたプロジェクト。ゲームの世界が好きだから、このプロジェクっトを自発しました。ラグナロックオンラインを宣伝ために１ページを作成しました。',
         background: 'ragnarok-popup.jpg',
         backgroundsp: 'ragnarok-sp.jpg',
-        link: '#',
+        link: 'https://junioangga.github.io/MyRagnarok/',
         display: 'ragnarokdisplay'
       },
       {
