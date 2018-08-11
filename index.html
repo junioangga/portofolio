@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Junio Angga - Front End Developer</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Favicons
+    ================================================== -->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css"  href="css/animate.css">
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css"  href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/modernizr.custom.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<div id="wrapper">
+<div id="portpopup">
+  <div class="color">
+    <div class="popuptitle">
+      <div class="container">
+        <div class="popupitem" v-for="popup in popups" v-bind:class="popup.display">
+          <div class="row">
+            <div class="col-md-6 col-sm-12 spdisplay">
+              <div class="portopopbg" v-bind:style="{ 'background-image': 'url(img/' + popup.backgroundsp + ')' }">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="popupcontent">
+                <h3 class="english">{{popup.titleeng}}</h3>
+                <h3 class="japanese">{{popup.titlejp}}</h3>
+                <p class="english">{{popup.narationeng}}</p>
+                <p class="japanese">{{popup.narationjp}}</p>
+                <a href="#" class="btn btn-default dud margin-right-20 backtosite english">Back</a> 
+                <a href="#" class="btn btn-default dud margin-right-20 backtosite japanese">閉じる</a> 
+                <a v-bind:href="popup.link" class="btn btn-default english">Go to website</a> 
+                <a v-bind:href="popup.link" class="btn btn-default japanese">ウェブサイトへ</a> 
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 pcdisplay">
+              <div class="portopopbg" v-bind:style="{ 'background-image': 'url(img/' + popup.background + ')' }">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="header">
+  <div class="intro">
+    <div class="container">
+      <div class="row">
+        <div class="intro-text">
+          <h1 v-if="!japanese">Hello, I'm <span class="name">Junio Angga</span></h1>
+          <h1 v-if="!english">初めまして！<span class="name">ジュニオアンガ</span>です。</h1>
+          <p v-if="!japanese">I am a professional Front End Developer</p>
+          <p v-if="!english">フロントエンドエンジニアです。</p>
+          <a href="#" class="btn btn-default btn-lg languageeng" v-on:click="english=true,japanese=false">English</a>
+          <a href="#" class="btn btn-default btn-lg languagejap" v-on:click="english=false,japanese=true">日本語</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Navigation -->
+<div id="nav">
+  <nav class="navbar navbar-custom">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
+        <a class="navbar-brand page-scroll" href="#page-top">Junio Angga</a> </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <ul class="nav navbar-nav">
+          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+          <li class="hidden"> <a href="#page-top"></a> </li>
+          <li v-if="!japanese"> <a class="page-scroll" href="#about">About</a> </li>
+          <li v-if="!english"> <a class="page-scroll" href="#about">自己紹介</a> </li>
+          <li v-if="!japanese"> <a class="page-scroll" href="#skills">Skills</a> </li>
+          <li v-if="!english"> <a class="page-scroll" href="#skills">スキル</a> </li>
+          <li v-if="!japanese"> <a class="page-scroll" href="#portfolio">Portfolio</a> </li>
+          <li v-if="!english"> <a class="page-scroll" href="#portfolio">ポートフォリオ</a> </li>
+          <li v-if="!japanese"> <a class="page-scroll" href="#resume">Resume</a> </li>
+          <li v-if="!english"> <a class="page-scroll" href="#resume">履歴書</a> </li>
+          <li v-if="!japanese"> <a class="page-scroll" href="#contact">Contact</a> </li>
+          <li v-if="!english"> <a class="page-scroll" href="#contact">連絡先</a> </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- About Section -->
+<div id="about">
+  <div class="container">
+    <div class="section-title text-center center">
+      <h2 v-if="!japanese">About Me</h2>
+      <h2 v-if="!english">自己紹介</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center wow fadeInLeft"><img src="img/about.jpg" class="img-responsive"></div>
+      <div class="col-md-8 col-md-offset-2">
+        <div class="about-text wow fadeInRight">
+          <p v-if="!japanese">Currently working as a full-time front-end developer at Cranium corporation. I love building beautiful websites and making it as efficient as possible. I am always hungry for new challenges and innovations. A hardworking guy that don't know when to give up!</p>
+          <p v-if="!japanese">Beside by front end coding proviciency, I can speak several languages including Japanese. I believe in limitless human pottential thus even though I work as a Front-end developer, I never hinder myself to learn new things given the chance.</p>
+          <p v-if="!english">私は今フロントエンドエンジニアとしてクラ二ウム株式会社で働いています。綺麗で効率なウェブサイトをできる限り向上に作るのが好きです。新しいチャレンジをいつも探します。諦めるを認めない勤勉な男です！</p>
+          <p v-if="!english">私はフロントエンドエンジニアですが、いくつか言語が話せます。日本語も話せます。自分の潜在を信じていますからいつも新しい知識を知りたいです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Skills Section -->
+<div id="skills" class="text-center kurs">
+  <div class="container">
+    <div class="section-title center">
+      <h2 v-if="!japanese">Skills</h2>
+      <h2 v-if="!english">スキル</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 sp-mrg-btm-40">
+        <i class="wow fadeInLeft">
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 469.38 372.92"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{fill:url(#linear-gradient-3);}.cls-4{fill:url(#linear-gradient-4);}.cls-5{fill:url(#linear-gradient-5);}</style><linearGradient id="linear-gradient" x1="149.37" y1="617.19" x2="507.37" y2="274.19" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"></stop><stop offset="1" stop-color="#fff"></stop></linearGradient><linearGradient id="linear-gradient-2" x1="25.38" y1="487.79" x2="383.38" y2="144.79" xlink:href="#linear-gradient"></linearGradient><linearGradient id="linear-gradient-3" x1="53.91" y1="517.56" x2="411.91" y2="174.56" xlink:href="#linear-gradient"></linearGradient><linearGradient id="linear-gradient-4" x1="20.28" y1="482.45" x2="378.28" y2="139.45" xlink:href="#linear-gradient"></linearGradient><linearGradient id="linear-gradient-5" x1="37.1" y1="500.01" x2="395.1" y2="157.01" xlink:href="#linear-gradient"></linearGradient></defs><title>Vector Smart Object3</title><path class="cls-1" d="M331,602.91q-94.25,0-188.49,0c-10.92,0-14-3.13-14-13.94q0-95.25,0-190.49,0-50.49,0-101c0-10.68,3.42-14.11,14.06-14.11q189,0,378,0c8.88,0,13.38,4.72,13.3,13.11-0.21,22.49-.27,45-0.3,67.48q-0.06,45.74,0,91.48,0,66.75-.09,133.49a22,22,0,0,1-1.52,8.7c-1.9,4.27-5.9,5.31-10.42,5.3q-59.24-.1-118.49,0H331Zm181.08-21.15V390H149.8V581.76H512.09Zm0.33-276.9H149.52c0,19.11,0,37.76,0,56.4,0,7.65,0,7.61,7.52,7.61H506.92c2.58,0,5.53.73,5.52-3.57C512.38,345.31,512.42,325.33,512.42,304.86Z" transform="translate(-64.45 -230.03)"></path><path class="cls-2" d="M459.17,250.9h-7.54q-180,0-360-.12c-5.27,0-6.28,1.65-6.27,6.52q0.2,137.49.1,275c0,2.12,0,4.25,0,7.21,5.81,0,11.09-.19,16.35.06,4.81,0.22,8.09,2.86,9.51,7.52,1.31,4.3.12,8.23-3.39,10.67a16.51,16.51,0,0,1-8.34,2.54c-7.48.34-15,.2-22.49,0.09-9-.13-12.62-3.8-12.64-13q-0.08-52.24,0-104.49,0-98.24,0-196.48c0-1.5,0-3,0-4.5,0.32-8,4.21-11.83,12.26-11.85,20.83-.06,41.66,0,62.49,0l327,0c10.6,0,14,3.56,13.84,14.13-0.11,5.83.05,11.67-.08,17.5-0.14,6.31-4.33,10.52-10.25,10.55S459.5,268,459.2,261.82C459,258.5,459.17,255.18,459.17,250.9Z" transform="translate(-64.45 -230.03)"></path><path class="cls-3" d="M246.38,345.9a12.84,12.84,0,0,1-13.12-12.31,13.14,13.14,0,0,1,12.9-13.2,12.73,12.73,0,0,1,12.94,12.46A12.45,12.45,0,0,1,246.38,345.9Z" transform="translate(-64.45 -230.03)"></path><path class="cls-4" d="M175.81,345.9a12.55,12.55,0,0,1-12.7-12.63,12.89,12.89,0,0,1,25.79-.09C188.93,340.49,183.27,346,175.81,345.9Z" transform="translate(-64.45 -230.03)"></path><path class="cls-5" d="M210.69,345.9A12.78,12.78,0,0,1,198.15,333a13.09,13.09,0,0,1,12.92-12.63,12.75,12.75,0,0,1,12.9,13C223.89,340.73,218.2,346.08,210.69,345.9Z" transform="translate(-64.45 -230.03)"></path></svg>
+        </i>
+        <ul class="list">
+              <li v-if="!japanese" class="head wow fadeInRight"><strong>Frameworks &amp;<br>Coding Languages</strong></li>
+              <li v-if="!english" class="head wow fadeInRight"><strong>フラムワークと<br>使えるコーディング言語</strong></li>
+              <li class="wow fadeInRight">Vue.js</li>
+              <li class="wow fadeInRight">jQuery</li>
+              <li class="wow fadeInRight">Google AMP</li>
+              <li class="wow fadeInRight">Javascript</li>
+              <li class="wow fadeInRight">Bootstrap</li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-sm-6 sp-mrg-btm-40">
+        <i class="wow fadeInLeft">
+          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 505.13 467.67"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{fill:url(#linear-gradient-3);}.cls-4{fill:url(#linear-gradient-4);}.cls-5{fill:url(#linear-gradient-5);}.cls-6{fill:url(#linear-gradient-6);}.cls-7{fill:url(#linear-gradient-7);}.cls-8{fill:url(#linear-gradient-8);}.cls-9{fill:url(#linear-gradient-9);}</style><linearGradient id="linear-gradient" x1="297.21" y1="656.89" x2="297.21" y2="153.69" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff"/></linearGradient><linearGradient id="linear-gradient-2" x1="300.09" y1="656.89" x2="300.09" y2="153.69" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-3" x1="298.08" y1="656.89" x2="298.08" y2="153.69" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-4" x1="-113.16" y1="656.89" x2="-113.16" y2="153.69" gradientTransform="translate(212.66 147)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-5" x1="-30.03" y1="656.89" x2="-30.03" y2="153.69" gradientTransform="translate(107.03 41.98)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-6" x1="52.15" y1="656.89" x2="52.15" y2="153.69" gradientTransform="translate(42.35 -43.9)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-7" x1="-321.3" y1="656.89" x2="-321.3" y2="153.69" gradientTransform="translate(812.24 -379.69)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-8" x1="23.26" y1="656.89" x2="23.26" y2="153.69" gradientTransform="translate(490.18 -371.05)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-9" x1="286.99" y1="656.89" x2="286.99" y2="153.69" gradientTransform="translate(208.95 -223.8)" xlink:href="#linear-gradient"/></defs><title>idea</title><path class="cls-1" d="M300,188c71.05-.29,133.65,51.71,146,121.7,7.61,43.19-.41,82.78-29,117.1a109.66,109.66,0,0,1-35,27.71,12.29,12.29,0,0,0-7.16,9.42A169.35,169.35,0,0,1,370,482.22c-0.57,1.83-2.49,3.23-3.79,4.83-1.41-1.65-3.3-3.1-4.16-5-3.69-8.17-3.64-16.85-2.45-25.5,1.08-7.81,6.11-13,12.26-17.45C396.77,421,412.64,396.78,419,366.73c11.13-52.56-13-106.53-59.46-134.41-19.22-11.53-40-18.44-62.33-19.13-22.77-.7-43.56,6.86-62.72,18.76C162,277,153.32,380,217.11,438.37c2.58,2.36,5.25,4.62,7.92,6.89,6.09,5.17,8.93,11.56,7,19.53A127.44,127.44,0,0,1,227.13,482c-0.86,2.17-3.86,4.58-6.07,4.77-1.59.13-4.25-2.93-5.08-5.08-1.71-4.46-2.27-9.35-3.77-13.91a13.11,13.11,0,0,0-3.93-6.21c-45.48-34.16-67.38-79.73-61.6-136.2,5.57-54.43,34.56-94.51,83.42-119.5C255.89,192.64,275.59,188.08,300,188Z" transform="translate(-42.65 -187.98)"/><path class="cls-2" d="M361.81,552.23H237.3c0.81,8.77.66,17.65,2.68,26,2.1,8.71,9.16,13.57,17.91,15.55,8.55,1.94,12.21,6.32,12.28,15,0,4.16,0,8.33-.13,12.49-0.12,3.69,1.32,5.55,5.21,5.64,16.48,0.37,33,.9,49.44,1.28,5.05,0.12,7.06-2,7.51-7.18s1.06-10.26,1.66-15.38c0.5-4.29,3-6.39,7.3-6.68,15.22-1,26.84-8,34.76-21.11a19.11,19.11,0,0,1,2.84-4.09c1.33-1.27,3.08-2.91,4.62-2.88,1.14,0,3.08,2.38,3.19,3.82,0.36,4.51,1.12,9.44-.23,13.56-4.27,13-12.94,22.76-25,29.25-2.72,1.46-3.68,3.07-3.71,6.14a32,32,0,0,1-32.2,31.95c-17.16.1-34.32,0.15-51.47,0-18.89-.15-32.3-13.76-32.21-32.68,0-3.55-.94-5.61-4.11-7.56-15-9.27-22.46-23.29-23.52-40.62-0.73-12-.78-24-1-36-0.15-7.55,3.5-11.67,10.89-12,42.93-2.2,85.88-3.16,128.85-1,7.65,0.38,15.31.67,22.95,1.17,5.29,0.35,9.41,3.78,9.12,8.7a179.82,179.82,0,0,1-3.11,25.1c-1,4.9-3.9,10-9.8,9.84s-7-5.82-8.43-10.37C362.75,557.58,362.39,554.92,361.81,552.23Z" transform="translate(-42.65 -187.98)"/><path class="cls-3" d="M293.1,335.9c8.39,4.27,16.24,1.71,23.93,1.68,3,0,6-.54,9-0.59,8.52-.12,13.94,6.41,11.58,14.47-5.2,17.74-11.33,35.14-20.69,51.21-3.41,5.85-8.3,8-14.19,6.33-6.45-1.83-9.66-6.76-8-13.28,2.7-10.76,5.78-21.43,8.86-32.71-1.56,0-3.13,0-4.71,0-9.65-.3-19.31-0.4-28.94-1-8.51-.55-14.29-9.13-10.83-16.92,5.79-13.05,11.66-26.22,19.13-38.33,3.89-6.3,11.07-10.72,17.17-15.45,3.27-2.53,7.22-2.11,10.54.85s1.66,5.85.41,9.05C301.83,312.62,297.56,324.12,293.1,335.9Z" transform="translate(-42.65 -187.98)"/><rect class="cls-4" x="83.5" y="386.39" width="32" height="69" rx="16" ry="16" transform="translate(-257.9 529.53) rotate(-120)"/><rect class="cls-5" x="61" y="303.39" width="32" height="69" rx="16" ry="16" transform="translate(-310.62 183.02) rotate(-82.65)"/><rect class="cls-6" x="78.5" y="221.39" width="32" height="69" rx="16" ry="16" transform="translate(-212.75 1.58) rotate(-55.66)"/><rect class="cls-7" x="474.94" y="220.21" width="32" height="69" rx="16" ry="16" transform="translate(423.4 -485.79) rotate(60)"/><rect class="cls-8" x="497.44" y="303.21" width="32" height="69" rx="16" ry="16" transform="translate(871.44 -316.25) rotate(97.35)"/><rect class="cls-9" x="479.94" y="385.21" width="32" height="69" rx="16" ry="16" transform="translate(1079.61 59.02) rotate(124.34)"/></svg></i>
+          <ul class="list">
+              <li v-if="!japanese" class="head wow fadeInRight"><strong>Language<br>skills</strong></li>
+              <li v-if="!english" class="head wow fadeInRight"><strong>言語<br>力</strong></li>
+              <li v-if="!japanese" class="wow fadeInRight">Japanese</li>
+              <li v-if="!english" class="wow fadeInRight">日本語</li>
+              <li v-if="!japanese" class="wow fadeInRight">English</li>
+              <li v-if="!english" class="wow fadeInRight">英語</li>
+              <li v-if="!japanese" class="wow fadeInRight">Indonesian</li>
+              <li v-if="!english" class="wow fadeInRight">インドネシア語</li>
+          </ul>
+      </div>
+      <div class="col-md-4 col-sm-6 ">
+        <i class="wow fadeInLeft">
+          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 505.79 368.63"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}</style><linearGradient id="linear-gradient" x1="225.58" y1="588.47" x2="478.58" y2="238.47" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"></stop><stop offset="1" stop-color="#fff"></stop></linearGradient><linearGradient id="linear-gradient-2" x1="121.87" y1="513.5" x2="374.87" y2="163.5" xlink:href="#linear-gradient"></linearGradient></defs><title>Vector Smart Object12</title><path class="cls-1" d="M307.14,334.34c16.57-1.13,16.53-1.12,22.51,12.91q31.77,74.62,63.65,149.19c3.28,7.63,3.17,14.55-.63,22-13.12,25.63-26.11,51.33-38.78,77.18-3.88,7.92-9.4,11.17-18.15,11-24.49-.41-49-0.57-73.48-0.27-9.17.12-14.77-3.15-18.77-11.54-12.47-26.13-25.43-52-38.46-77.88a22.12,22.12,0,0,1-.57-20.08q34.18-79,68.13-158.13c1.43-3.34,3.34-5,7.16-4.74s7.63,0.07,12.06.07c0.13,2.07.33,3.81,0.32,5.54,0,44.49-.16,89-0.11,133.48,0,4-1.23,6.4-4.72,8.44-9.33,5.46-13.11,15.57-10.1,25.79a22.75,22.75,0,0,0,43.71,0c3-10-.55-20-9.55-25.55-3.71-2.27-5.27-5.08-5.25-9.37q0.36-66,.56-132C306.66,338.46,307,336.52,307.14,334.34Z" transform="translate(-45.98 -237.98)"></path><path class="cls-2" d="M324,281.91c-0.17,1.59-.25,2.89-0.47,4.17-0.68,3.91-2.75,6.41-7,6.41q-17,0-34,0c-4.42,0-6.73-2.31-7.11-6.67-0.11-1.28-.35-2.55-0.72-5.23-7.44,2.94-14.64,5-21.09,8.47-29.2,15.73-45.7,40.35-49.92,73.22-0.19,1.48,0,3-.17,4.49-0.4,3.53,1.17,4.91,4.59,4.61a37.38,37.38,0,0,1,4,0c5.37,0.1,8.18,2.44,8.29,7.79q0.33,16.24,0,32.49c-0.11,5.26-3,7.75-8.38,7.8q-15.75.12-31.49,0c-5.92-.05-8.18-2.35-8.2-8.16q-0.08-16,0-32c0-5.77,2.09-7.83,7.76-7.92,0.5,0,1,0,1.5,0,8.69,0,8.22,0,8.92-8.74,2.19-27.62,13.83-50.82,34.24-69.46,5.37-4.91,11.66-8.81,17.55-13.15a11.39,11.39,0,0,0,3.84-3.87,35.2,35.2,0,0,0-4.43-.55c-43.49,0-87,.06-130.46-0.06-4,0-5.41,1.84-6.75,5.12a30,30,0,0,1-29.78,18.65A30.64,30.64,0,0,1,47,276.34C43,260.56,51.31,244.62,66.84,239.6c14.81-4.79,30.76,1.3,37.39,16.53,1.76,4,3.85,5.32,8.14,5.31q78.73-.21,157.46,0c4.39,0,5.8-1.25,5.69-5.67-0.24-9.86,1.61-11.44,11.63-11.41,9,0,18,0,27,0,7,0,9.32,2.34,9.39,9.22,0.08,7.71.08,7.75,7.94,7.75q77.23,0,154.46.06c4.1,0,6.05-1.17,7.62-5.16,5.13-13.06,19.35-20.25,34-17.81,12.93,2.16,23.6,14.58,24.19,28.16,0.65,15.07-8.58,28.16-22.28,31.6-14.89,3.74-29.55-3.12-35.85-17.31-1.76-4-3.79-5.48-8.13-5.46-42.32.14-84.64,0.09-127,.11a11.33,11.33,0,0,0-5.84,1.4,47.91,47.91,0,0,0,3.92,3c29.92,18.3,46.86,45,51.84,79.56,0.52,3.58-.48,8.2,1.43,10.49,1.57,1.88,6.45.9,9.83,1.41,3.56,0.54,5.8,2.7,5.84,6.37q0.16,17.49,0,35c0,4.24-2.8,6.5-6.73,6.57-11.33.21-22.66,0.19-34,0-4.54-.07-7.23-3-7.31-7.82q-0.24-16.24,0-32.49c0.09-4.93,2.78-7.39,7.42-7.69,11.11-.72,11.3-0.75,9.51-12.19-5.9-37.88-27.39-62.91-63.16-76a46.46,46.46,0,0,0-5.29-1.43A8.23,8.23,0,0,0,324,281.91Z" transform="translate(-45.98 -237.98)"></path></svg></i>
+          <ul class="list">
+              <li v-if="!japanese" class="head wow fadeInRight"><strong>Other<br>skills</strong></li>
+              <li v-if="!english" class="head wow fadeInRight"><strong>他の<br>スキル</strong></li>
+              <li class="wow fadeInRight">Photoshop</li>
+              <li v-if="!japanese" class="wow fadeInRight">Public speaking</li>
+              <li v-if="!english" class="wow fadeInRight">スピーチ</li>
+              <li v-if="!japanese" class="wow fadeInRight">Content writing</li>
+              <li v-if="!english" class="wow fadeInRight">ライター</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Portfolio Section -->
+<div id="portfolio">
+  <div class="container">
+    <div class="section-title text-center center">
+      <h2>Portfolio</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="portfolio-items">
+        <div class="col-sm-6 col-md-3 col-lg-3 web wow" v-bind:class="porto.wow" v-for="porto in portos">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a class="dud" href="#" rel="prettyPhoto">
+              <div class="hover-text">
+                <h4 class="english">{{porto.titleeng}}</h4>
+                <h4 class="japanese">{{porto.titlejp}}</h4>
+                <a href="#" class="btn btn-default dud popuppop english" v-bind:class="porto.button">Learn More</a>
+                <a href="#" class="btn btn-default dud popuppop japanese" v-bind:class="porto.button">もっと見る</a> </div>
+                <img v-bind:src="'img/'+porto.image" class="img-responsive marginmid"> </a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Resume Section -->
+<div id="resume" class="text-center">
+  <div class="container">
+    <div class="section-title center">
+      <h2 v-if="!japanese">Experience</h2>
+      <h2 v-if="!english">仕事経験</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="timeline">
+          <li class="timeline-inverted">
+            <div class="timeline-image">
+              <h4 v-if="!japanese">2018 <br>
+                - <br>
+                present </h4>
+              <h4 v-if="!english">2018 <br>
+                - <br>
+                現在 </h4>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4 v-if="!japanese">Cranium corporation</h4>
+                <h4 v-if="!english">クラ二ウム株式会社</h4>
+                <h4 v-if="!japanese" class="subheading">Front end engineer</h4>
+                <h4 v-if="!english" class="subheading">フロントエンドエンジニア</h4>
+              </div>
+              <div class="timeline-body">
+                <p v-if="!japanese">Front end developer at Cranium corporation. Held responsible for Futuready website development and update.</p>
+                <p v-if="!english">クラ二ウム株式会社のフロント開発者。Futureadyのメインサイトの開発とアプデートをしています。させて</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-image">
+              <h4>2014 <br>
+                - <br>
+                2017 </h4>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4 v-if="!japanese">Transcosmos Indonesia</h4>
+                <h4 v-if="!english">トランスコスモスインドネシア</h4>
+                <h4 v-if="!japanese" class="subheading">Web administrator</h4>
+                <h4 v-if="!english" class="subheading">ウェブアドミニストレータ</h4>
+              </div>
+              <div class="timeline-body">
+                <p v-if="!japanese">Web administrator job at Transcosmos Indonesia mostly involve around front end developing and QA.</p>
+                <p v-if="!english">トランスコスモスインドネシアのウェブアドミニストレータのしごとはウェブページを作って作ったウェーブチェックをします。</p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline-inverted">
+            <div class="timeline-image">
+              <h4>2013 <br>
+                - <br>
+                2013 </h4>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4 v-if="!japanese">Harvest Christian school</h4>
+                <h4 v-if="!english">Harvest christian学校</h4>
+                <h4 v-if="!japanese" class="subheading">Intern</h4>
+                <h4 v-if="!english" class="subheading">工場実習生</h4>
+              </div>
+              <div class="timeline-body">
+                <p v-if="!japanese">Intern in this school has to teach and manage data of all students.</p>
+                <p v-if="!english">Harvest christian学校で工場実習生。子供の教師になった子供のデータを多用しました。</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="section-title center">
+      <h2 v-if="!japanese">Education</h2>
+      <h2 v-if="!english">教育</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="timeline">
+          
+          <!-- Education Section-->
+					
+          <li class="timeline-inverted">
+            <div class="timeline-image">
+              <h4>2014 <br>
+                - <br>
+                2010 </h4>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Bina Nusantara University</h4>
+                <h4 v-if="!japanese" class="subheading">Bachelor Degree of Language</h4>
+                <h4 v-if="!english">言語の大学位</h4>
+              </div>
+              <div class="timeline-body">
+                <p v-if="!japanese">Learned for 4 years and earned a bachelor degree in English literature.</p>
+                <p v-if="!english">Bina nusantara大学で英語専門を習いました</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-image">
+              <h4>2010 <br>
+                - <br>
+                2007 </h4>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Kemurnian 2</h4>
+                <h4 v-if="!japanese" class="subheading">High School Degree</h4>
+                <h4 v-if="!english" class="subheading">高校</h4>
+              </div>
+              <div class="timeline-body">
+                <p v-if="!japanese" class="text-muted">Joined Kemurnian school and finished High school in three years.</p>
+                <p v-if="!english" class="text-muted">Kemurnian学生の高校で教育されました</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact Section -->
+<div id="contact" class="text-center">
+  <div class="container">
+    <div class="section-title center">
+      <h2 v-if="!japanese">Contact</h2>
+      <h2 v-if="!english">連絡先</h2>
+      <hr>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-4"> <i class="fa fa-map-marker fa-2x"></i>
+        <p>Poris gaga Blok A6 No.22, Tangerang, Indonesia</p>
+      </div>
+      <div class="col-md-4"> <i class="fa fa-envelope-o fa-2x"></i>
+        <p>junio.angga@gmail.com</p>
+      </div>
+      <div class="col-md-4"> <i class="fa fa-phone fa-2x"></i>
+        <p>+6285921516292</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div class="container text-center">
+    <div class="fnav">
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="js/easypiechart.js"></script> 
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.js"></script> 
+<script type="text/javascript" src="js/jquery.counterup.js"></script> 
+<script type="text/javascript" src="js/waypoints.js"></script> 
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="js/contact_me.js"></script> 
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script>
+  //new WOW().init();
+  var wow = new WOW( {
+    mobile:    false
+  });
+  wow.init();
+</script>
+</body>
+</html>
